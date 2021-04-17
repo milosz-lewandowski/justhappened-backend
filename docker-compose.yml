@@ -11,6 +11,8 @@ services:
       POSTGRES_USERNAME: postgres
     ports:
       - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
 
   adminer:
@@ -39,3 +41,4 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+  pgdata:
