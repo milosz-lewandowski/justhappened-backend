@@ -2,12 +2,10 @@ package pl.miloszlewandowski.controllers;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -15,11 +13,18 @@ import javax.validation.Valid;
 @RestController
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public ModelAndView index(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
         return mav;
+    }
+
+    @RequestMapping("/")
+    public RedirectView amplifyReact() {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("https://main.d2k041opttu9wi.amplifyapp.com/");
+        return redirectView;
     }
 
     @GetMapping("/justhappened")
