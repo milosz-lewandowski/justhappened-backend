@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: frontend-server
+    build:
+      context: ./webapp
+      args:
+        - APP_SERVICES_HOST=/api
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - backend
+
+  backend:
+    image: backend-server
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+
+  networks:
+    frontend:
+    backend:
