@@ -23,12 +23,8 @@ services:
     ports:
       - 8081:8080
   web:
-    build:
-      context: justhappened-web/.
-      dockerfile: Dockerfile
-      depends_on:
-        - db
-        - jhapp
+    build: ./justhappened-web
+
   caddy:
     image: caddy
     volumes:
@@ -37,7 +33,7 @@ services:
     ports:
       - 80:80
       - 443:443
-    command: caddy reverse-proxy --from miloszlewandowski.pl --to jhapp:8080
+    command: caddy reverse-proxy --from miloszlewandowski.pl --to web:3000
 
 volumes:
   caddy_data:
