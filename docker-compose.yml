@@ -27,13 +27,15 @@ services:
 
   caddy:
     image: caddy
+    working_dir: /app
     volumes:
       - caddy_data:/data
       - caddy_config:/config
+      - ./Caddyfile:/app/Caddyfile
     ports:
       - 80:80
       - 443:443
-    command: caddy reverse-proxy --from miloszlewandowski.pl --to web:3000
+    command: caddy run
 
 volumes:
   caddy_data:
