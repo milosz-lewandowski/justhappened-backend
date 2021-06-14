@@ -11,6 +11,7 @@ public class Activity {
     private Long id;
     private String activityName;
     @ManyToOne
+    @JoinColumn
     private Patient patient;
 
     public Activity() {
@@ -42,4 +43,12 @@ public class Activity {
 
     //Powiązania z potrzebami...
 
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", activityName='" + activityName + '\'' +
+                ", patient=" + patient +
+                '}';
+    }
 }
