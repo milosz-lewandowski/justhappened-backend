@@ -1,11 +1,13 @@
 package pl.miloszlewandowski.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "therapists")
-public class Therapist {
+public class Therapist implements Serializable {
 
     //in case of run errors try to set drop-create ddl option
 
@@ -14,11 +16,13 @@ public class Therapist {
     private Long id;
     private String Name;
     private String Specialization;
-    @OneToMany(mappedBy = "therapist")
-    private List<Patient> patients;
 
     public Therapist() {
     }
+//    public Therapist(String name, String specialization) {
+//        Name = name;
+//        Specialization = specialization;
+//    }
 
     public Long getId() {
         return id;
@@ -44,11 +48,12 @@ public class Therapist {
         Specialization = specialization;
     }
 
-    public List<Patient> getPatients() {
-        return patients;
-    }
-
-    public void setPatients(List<Patient> patients) {
-        this.patients = patients;
+    @Override
+    public String toString() {
+        return "Therapist{" +
+                "id=" + id +
+                ", Name='" + Name + '\'' +
+                ", Specialization='" + Specialization + '\'' +
+                '}';
     }
 }
