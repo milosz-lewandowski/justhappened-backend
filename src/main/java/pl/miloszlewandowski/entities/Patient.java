@@ -2,6 +2,7 @@ package pl.miloszlewandowski.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "patients")
@@ -50,5 +51,18 @@ public class Patient implements Serializable {
                 ", name='" + name + '\'' +
                 ", therapist=" + therapist +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return Objects.equals(id, patient.id) && Objects.equals(name, patient.name) && Objects.equals(therapist, patient.therapist);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, therapist);
     }
 }
