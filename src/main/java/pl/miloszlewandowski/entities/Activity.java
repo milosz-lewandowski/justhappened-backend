@@ -1,6 +1,7 @@
 package pl.miloszlewandowski.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "activities")
@@ -50,5 +51,18 @@ public class Activity {
                 ", activityName='" + activityName + '\'' +
                 ", patient=" + patient +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Activity activity = (Activity) o;
+        return Objects.equals(id, activity.id) && Objects.equals(activityName, activity.activityName) && Objects.equals(patient, activity.patient);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, activityName, patient);
     }
 }
