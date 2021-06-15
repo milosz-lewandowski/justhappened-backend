@@ -56,4 +56,17 @@ public class Therapist implements Serializable {
                 ", Specialization='" + Specialization + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Therapist therapist = (Therapist) o;
+        return Objects.equals(id, therapist.id) && Objects.equals(Name, therapist.Name) && Objects.equals(Specialization, therapist.Specialization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, Name, Specialization);
+    }
 }
