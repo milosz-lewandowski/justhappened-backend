@@ -1,18 +1,17 @@
 package pl.miloszlewandowski.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import pl.miloszlewandowski.entities.Patient;
+import pl.miloszlewandowski.entities.Therapist;
 import pl.miloszlewandowski.repositories.PatientRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+//patient = patientRepository.getById(id)
 @RestController
 public class PatientController {
 
@@ -22,19 +21,33 @@ public class PatientController {
         this.patientRepository = patientRepository;
     }
 
-//    @GetMapping("/patients")
-//    ModelAndView patientsList(){
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("patients", patientRepository.findAll());
-//        mav.setViewName("patientslist");
-//        return mav;
-//    }
     @GetMapping("/patients")
-    public List<Patient> patientsList(){
-        List<Patient> patients = new ArrayList<>();
-        patients.addAll(patientRepository.findAll());
-        patients.stream().forEach(patient -> patient.setTherapist(null));
-        return patients;
+    public ResponseEntity<Map<String, List<Patient>>> patientsList(){
+        Map<String, List<Patient>> map = new HashMap();
+        map.put("patients", patientRepository.findAll());
+        return ResponseEntity.ok(map);
     }
 
+    @GetMapping("/patients/{id}")
+    public ResponseEntity<Map<String, Patient>> getPatient(@PathVariable("id")Long id){
+        Map<String, Patient> map = new HashMap<>();
+        map.put("patient", patientRepository.getById(id));
+        return ResponseEntity.ok(map);
+    }
+
+    @PostMapping("patients")
+    public void savePatient(@RequestBody Patient patient){
+        patientRepository.save(patient);
+    }
+
+    @PutMapping("patients/{id}")
+    public void updatePatient(@RequestBody Patient patient){
+//        patientRepository.getById(patient.getId());
+        patientRepository.save(patient);
+    }
+
+    @DeleteMapping("/patients/{id}")
+    public void deletePatient(@PathVariable("id") Long id){
+        patientRepository.deleteById(id);
+    }
 }
