@@ -2,7 +2,9 @@ package pl.miloszlewandowski.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.miloszlewandowski.entities.Patient;
 import pl.miloszlewandowski.entities.Therapist;
+import pl.miloszlewandowski.repositories.PatientRepository;
 import pl.miloszlewandowski.repositories.TherapistRepository;
 
 import java.util.ArrayList;
@@ -14,9 +16,11 @@ import java.util.Map;
 public class TherapistsController {
 
     final TherapistRepository therapistRepository;
+    final PatientRepository patientRepository;
 
-    public TherapistsController(TherapistRepository therapistRepository) {
+    public TherapistsController(TherapistRepository therapistRepository, PatientRepository patientRepository) {
         this.therapistRepository = therapistRepository;
+        this.patientRepository = patientRepository;
     }
 
     @GetMapping("/therapists")
@@ -49,5 +53,14 @@ public class TherapistsController {
     public void deleteTherapist(@PathVariable("id") Long id){
         therapistRepository.deleteById(id);
     }
+
+    @GetMapping("/therapists/{id}/patients")
+    public ResponseEntity<Map<String, List<Patient>>> getTherapistPatients(
+            @PathVariable("id") Long id){
+        Map<String, List<Patient>> map = new HashMap<>();
+        map.put("patients", patientRepository.getPatientsByTherapistId(id));
+        return ResponseEntity.ok(map);
+    }
+
 }
 
