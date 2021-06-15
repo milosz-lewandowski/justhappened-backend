@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "moodchecks")
@@ -71,5 +72,18 @@ public class Moodcheck {
                 ", mood=" + mood +
                 ", selfEsteem=" + selfEsteem +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Moodcheck moodcheck = (Moodcheck) o;
+        return Objects.equals(id, moodcheck.id) && Objects.equals(dateTime, moodcheck.dateTime) && Objects.equals(activity, moodcheck.activity) && Objects.equals(mood, moodcheck.mood) && Objects.equals(selfEsteem, moodcheck.selfEsteem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dateTime, activity, mood, selfEsteem);
     }
 }
