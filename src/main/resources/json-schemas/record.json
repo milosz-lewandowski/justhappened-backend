@@ -1,0 +1,6 @@
+{
+  "recordid": "integer",
+  "datetime": "string",
+  "patient": null,
+  "hasmoodcheck": "boolean"
+}
