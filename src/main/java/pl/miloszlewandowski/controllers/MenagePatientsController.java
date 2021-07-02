@@ -3,21 +3,19 @@ package pl.miloszlewandowski.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.miloszlewandowski.entities.Patient;
-import pl.miloszlewandowski.entities.Therapist;
 import pl.miloszlewandowski.repositories.PatientRepository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 //patient = patientRepository.getById(id)
 @RestController
-public class PatientController {
+public class MenagePatientsController {
 
     final PatientRepository patientRepository;
 
-    public PatientController(PatientRepository patientRepository) {
+    public MenagePatientsController(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
     }
 
@@ -42,7 +40,8 @@ public class PatientController {
 
     @PutMapping("patients/{id}")
     public void updatePatient(@RequestBody Patient patient){
-//        patientRepository.getById(patient.getId());
+        patientRepository.getById(patient.getPatientId());
+
         patientRepository.save(patient);
     }
 
