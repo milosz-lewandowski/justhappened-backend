@@ -11,32 +11,22 @@ import java.util.Objects;
 public class Moodcheck {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime dateTime;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long MoodcheckId;
     @OneToOne
     private Activity activity;
     private Integer mood;
     private Integer selfEsteem;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "record_id")
+    private Record record;
 
-    public Moodcheck() {
+    public Long getMoodcheckId() {
+        return MoodcheckId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setMoodcheckId(Long moodcheckId) {
+        MoodcheckId = moodcheckId;
     }
 
     public Activity getActivity() {
@@ -63,27 +53,15 @@ public class Moodcheck {
         this.selfEsteem = selfEsteem;
     }
 
-    @Override
-    public String toString() {
-        return "Moodcheck{" +
-                "id=" + id +
-                ", dateTime=" + dateTime +
-                ", activity=" + activity +
-                ", mood=" + mood +
-                ", selfEsteem=" + selfEsteem +
-                '}';
+    public Record getRecord() {
+        return record;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Moodcheck moodcheck = (Moodcheck) o;
-        return Objects.equals(id, moodcheck.id) && Objects.equals(dateTime, moodcheck.dateTime) && Objects.equals(activity, moodcheck.activity) && Objects.equals(mood, moodcheck.mood) && Objects.equals(selfEsteem, moodcheck.selfEsteem);
+    public void setRecord(Record record) {
+        this.record = record;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, dateTime, activity, mood, selfEsteem);
+    public Moodcheck() {
     }
+
 }
