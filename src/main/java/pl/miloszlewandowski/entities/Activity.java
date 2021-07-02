@@ -8,22 +8,19 @@ import java.util.Objects;
 public class Activity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ActivityId;
     private String activityName;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    public Activity() {
+    public Long getActivityId() {
+        return ActivityId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setActivityId(Long activityId) {
+        ActivityId = activityId;
     }
 
     public String getActivityName() {
@@ -42,27 +39,7 @@ public class Activity {
         this.patient = patient;
     }
 
-    //Powiązania z potrzebami...
-
-    @Override
-    public String toString() {
-        return "Activity{" +
-                "id=" + id +
-                ", activityName='" + activityName + '\'' +
-                ", patient=" + patient +
-                '}';
+    public Activity() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Activity activity = (Activity) o;
-        return Objects.equals(id, activity.id) && Objects.equals(activityName, activity.activityName) && Objects.equals(patient, activity.patient);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, activityName, patient);
-    }
 }
