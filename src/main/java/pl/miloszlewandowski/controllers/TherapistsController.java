@@ -54,13 +54,13 @@ public class TherapistsController {
         therapistRepository.deleteById(id);
     }
 
-    @GetMapping("/therapists/{id}/patients")
-    public ResponseEntity<Map<String, List<Patient>>> getTherapistPatients(
-            @PathVariable("id") Long id){
-        Map<String, List<Patient>> map = new HashMap<>();
-        map.put("patients", patientRepository.getPatientsByTherapistId(id));
-        return ResponseEntity.ok(map);
-    }
+//    @GetMapping("/therapists/{id}/patients")
+//    public ResponseEntity<Map<String, List<Patient>>> getTherapistPatients(
+//            @PathVariable("id") Long id){
+//        Map<String, List<Patient>> map = new HashMap<>();
+//        map.put("patients", patientRepository.getPatientsByTherapistId(id));
+//        return ResponseEntity.ok(map);
+//    }
 
 }
 
