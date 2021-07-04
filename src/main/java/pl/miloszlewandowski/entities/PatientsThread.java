@@ -1,9 +1,7 @@
 package pl.miloszlewandowski.entities;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "threads")
@@ -13,8 +11,8 @@ public class PatientsThread  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long PatientThreadId;
     private String name;
-    @ManyToOne
-    private Record record;
+    @OneToMany
+    private List<Record> record;
 
     public Long getPatientThreadId() {
         return PatientThreadId;
@@ -32,11 +30,11 @@ public class PatientsThread  {
         this.name = name;
     }
 
-    public Record getRecord() {
+    public List<Record> getRecord() {
         return record;
     }
 
-    public void setRecord(Record record) {
+    public void setRecord(List<Record> record) {
         this.record = record;
     }
 
