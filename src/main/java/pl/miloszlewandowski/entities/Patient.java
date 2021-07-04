@@ -12,10 +12,19 @@ public class Patient {
     private Long patientId;
     private String name;
     @OneToMany
-    @JoinColumn(name = "activity_id")
     List<Activity> activities;
+    @OneToMany
+    List<Record> records;
     @ManyToOne
     private Therapist therapist;
+
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(List<Record> records) {
+        this.records = records;
+    }
 
     public List<Activity> getActivities() {
         return activities;
