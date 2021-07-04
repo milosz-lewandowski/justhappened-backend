@@ -18,7 +18,7 @@ public class Moodcheck {
     private Integer mood;
     private Integer selfEsteem;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "record_id")
+//    @JoinColumn(name = "record_id")
     private Record record;
 
     public Long getMoodcheckId() {
