@@ -15,7 +15,7 @@ public class Therapist {
     private String Name;
     private String Specialization;
     @OneToMany
-    @JoinColumn(name = "patient_id")
+//    @JoinColumn(name = "patient_id")
     private List<Patient> patient;
 
     public Therapist() {
