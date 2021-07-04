@@ -1,10 +1,9 @@
 package pl.miloszlewandowski.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
- import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "records")
@@ -13,11 +12,27 @@ public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long RecordId;
+    @Column(nullable = false, updatable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTime;
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
     private boolean hasMoodcheck;
+
+    public Moodcheck getMoodcheck() {
+        return moodcheck;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void setMoodcheck(Moodcheck moodcheck) {
+        this.moodcheck = moodcheck;
+    }
+
+    @OneToOne
+    private Moodcheck moodcheck;
 
     public Long getRecordId() {
         return RecordId;
@@ -29,10 +44,6 @@ public class Record {
 
     public LocalDateTime getDateTime() {
         return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 
     public Patient getPatient() {
