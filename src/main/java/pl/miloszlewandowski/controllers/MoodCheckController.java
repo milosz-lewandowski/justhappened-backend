@@ -1,23 +1,21 @@
 package pl.miloszlewandowski.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.miloszlewandowski.entities.Moodcheck;
-import pl.miloszlewandowski.repositories.MoodcheksRepository;
+import pl.miloszlewandowski.repositories.MoodCheksRepository;
 
 @RestController
 @RequestMapping(consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE,
         MediaType.APPLICATION_JSON_VALUE,
         MediaType.ALL_VALUE})
-public class MoodcheckController {
+public class MoodCheckController {
 
-    final MoodcheksRepository moodcheksRepository;
+    final MoodCheksRepository moodcheksRepository;
 
-    public MoodcheckController(MoodcheksRepository moodcheksRepository) {
+    public MoodCheckController(MoodCheksRepository moodcheksRepository) {
         this.moodcheksRepository = moodcheksRepository;
     }
 

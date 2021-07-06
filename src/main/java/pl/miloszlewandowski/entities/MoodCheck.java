@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "moodchecks")
-public class Moodcheck {
+public class MoodCheck {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,7 +61,7 @@ public class Moodcheck {
         this.record = record;
     }
 
-    public Moodcheck() {
+    public MoodCheck() {
     }
 
 }
