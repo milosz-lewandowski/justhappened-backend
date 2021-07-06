@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "file.upload-dir",
+      "type": "java.lang.String",
+      "description": "Description for file.upload-dir."
+    },
+    {
+      "name": "spring.sql.init.mode",
+      "type": "java.lang.String",
+      "description": "Description for spring.sql.init.mode."
+    }
+  ] }
