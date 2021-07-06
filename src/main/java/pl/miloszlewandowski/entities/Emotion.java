@@ -4,6 +4,9 @@ import pl.miloszlewandowski.enums.EmotionsGroup;
 
 import javax.persistence.*;
 
+
+// TODO: Decide to use emotions as enum, entity, or kind of DB dictionary
+
 @Entity
 @Table(name = "emotions")
 public class Emotion {
