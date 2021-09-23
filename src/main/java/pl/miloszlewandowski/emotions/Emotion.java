@@ -1,6 +1,4 @@
-package pl.miloszlewandowski.entities;
-
-import pl.miloszlewandowski.enums.EmotionsGroup;
+package pl.miloszlewandowski.emotions;
 
 import javax.persistence.*;
 

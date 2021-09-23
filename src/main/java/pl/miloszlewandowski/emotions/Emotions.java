@@ -1,4 +1,4 @@
-package pl.miloszlewandowski.enums;
+package pl.miloszlewandowski.emotions;
 
 public enum Emotions {
     FURIOUS(EmotionsGroup.ANGRY),
