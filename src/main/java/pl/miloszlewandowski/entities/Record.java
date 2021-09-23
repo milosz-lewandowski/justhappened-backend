@@ -13,19 +13,11 @@ public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long RecordId;
-    @Column(nullable = false, updatable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTime;
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
-    private boolean hasMoodCheck;
-//    private boolean hasTargetCheck;
-    private boolean hasObservation;
-    private boolean hasEmotions;
     @OneToOne
     private MoodCheck moodcheck;
-//    @OneToOne
-//    private TargetCheck targetCheck;
     @OneToOne
     private Observation observation;
     @OneToMany
@@ -53,30 +45,6 @@ public class Record {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-    }
-
-    public boolean isHasMoodCheck() {
-        return hasMoodCheck;
-    }
-
-    public void setHasMoodCheck(boolean hasMoodCheck) {
-        this.hasMoodCheck = hasMoodCheck;
-    }
-
-    public boolean isHasObservation() {
-        return hasObservation;
-    }
-
-    public void setHasObservation(boolean hasObservation) {
-        this.hasObservation = hasObservation;
-    }
-
-    public boolean isHasEmotions() {
-        return hasEmotions;
-    }
-
-    public void setHasEmotions(boolean hasEmotions) {
-        this.hasEmotions = hasEmotions;
     }
 
     public MoodCheck getMoodcheck() {
