@@ -12,7 +12,6 @@ public class Activity {
     private Long ActivityId;
     private String activityName;
     @ManyToOne
-//    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     public Long getActivityId() {

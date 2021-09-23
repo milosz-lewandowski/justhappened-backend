@@ -10,11 +10,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "emotions")
 public class Emotion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long emotionId;
     private String name;
-    private EmotionsGroup group;
+//    private EmotionsGroup group;
 
     public Emotion() {
     }
@@ -27,13 +28,13 @@ public class Emotion {
         this.name = name;
     }
 
-    public EmotionsGroup getGroup() {
-        return group;
-    }
+//    public EmotionsGroup getGroup() {
+//        return group;
+//    }
 
-    public void setGroup(EmotionsGroup group) {
-        this.group = group;
-    }
+//    public void setGroup(EmotionsGroup group) {
+//        this.group = group;
+//    }
 
     public Long getEmotionId() {
         return emotionId;
