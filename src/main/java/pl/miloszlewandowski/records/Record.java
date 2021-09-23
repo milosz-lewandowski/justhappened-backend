@@ -1,10 +1,12 @@
-package pl.miloszlewandowski.entities;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+package pl.miloszlewandowski.records;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import pl.miloszlewandowski.emotions.Emotion;
+import pl.miloszlewandowski.moodchecks.MoodCheck;
+import pl.miloszlewandowski.observations.Observation;
+import pl.miloszlewandowski.patients.Patient;
 
 @Entity
 @Table(name = "records")

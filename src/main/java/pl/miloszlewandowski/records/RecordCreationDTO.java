@@ -1,4 +1,4 @@
-package pl.miloszlewandowski.dto;
+package pl.miloszlewandowski.records;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

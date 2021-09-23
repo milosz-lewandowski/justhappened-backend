@@ -1,6 +1,6 @@
-package pl.miloszlewandowski.factories;
+package pl.miloszlewandowski.records;
 
-import pl.miloszlewandowski.entities.Record;
+import pl.miloszlewandowski.records.Record;
 
 import java.time.LocalDateTime;
 
