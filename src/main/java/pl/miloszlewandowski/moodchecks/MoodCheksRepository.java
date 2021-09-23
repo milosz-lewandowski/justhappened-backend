@@ -1,7 +1,6 @@
-package pl.miloszlewandowski.repositories;
+package pl.miloszlewandowski.moodchecks;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.miloszlewandowski.entities.MoodCheck;
 
 public interface MoodCheksRepository extends JpaRepository<MoodCheck, Long> {
 }

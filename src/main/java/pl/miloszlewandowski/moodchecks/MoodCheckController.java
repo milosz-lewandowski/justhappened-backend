@@ -1,11 +1,10 @@
-package pl.miloszlewandowski.controllers;
+package pl.miloszlewandowski.moodchecks;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.miloszlewandowski.repositories.MoodCheksRepository;
 
 @RestController
 @RequestMapping(consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE,

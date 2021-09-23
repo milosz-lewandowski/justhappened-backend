@@ -1,10 +1,8 @@
-package pl.miloszlewandowski.entities;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+package pl.miloszlewandowski.moodchecks;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Objects;
+import pl.miloszlewandowski.activities.Activity;
+import pl.miloszlewandowski.records.Record;
 
 @Entity
 @Table(name = "moodchecks")
