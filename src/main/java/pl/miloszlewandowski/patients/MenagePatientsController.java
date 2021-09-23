@@ -1,9 +1,7 @@
-package pl.miloszlewandowski.controllers;
+package pl.miloszlewandowski.patients;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.miloszlewandowski.entities.Patient;
-import pl.miloszlewandowski.repositories.PatientRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,11 +24,11 @@ public class MenagePatientsController {
         return ResponseEntity.ok(map);
     }
 
+
+    //todo: service
     @GetMapping("/patients/{id}")
-    public ResponseEntity<Map<String, Patient>> getPatient(@PathVariable("id")Long id){
-        Map<String, Patient> map = new HashMap<>();
-        map.put("patient", patientRepository.getById(id));
-        return ResponseEntity.ok(map);
+    public ResponseEntity<Patient> getPatient(@PathVariable("id")Long id){
+        return ResponseEntity.ok(patientRepository.getById(id));
     }
 
     @PostMapping("patients")

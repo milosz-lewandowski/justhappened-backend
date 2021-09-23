@@ -1,9 +1,7 @@
-package pl.miloszlewandowski.repositories;
+package pl.miloszlewandowski.patients;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.miloszlewandowski.entities.Patient;
-
-import java.util.List;
+import pl.miloszlewandowski.patients.Patient;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 }
