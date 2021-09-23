@@ -1,6 +1,7 @@
-#different jdk on localhost (oracle jdk)
+FROM openjdk:16-alpine
 
-FROM openjdk:8-jdk-alpine
-ADD target/miloszlewandowski-01.jar .
+ADD target/miloszlewandowski-0.2.3.jar .
+
 EXPOSE 80
-CMD java -jar miloszlewandowski-01.jar
+
+CMD java -jar miloszlewandowski-0.2.3.jar
