@@ -1,6 +1,7 @@
-package pl.miloszlewandowski.entities;
+package pl.miloszlewandowski.observations;
 
 import javax.persistence.*;
+import pl.miloszlewandowski.threads.PatientsThread;
 
 @Entity
 public class Observation {

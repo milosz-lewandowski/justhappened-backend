@@ -1,4 +1,4 @@
-package pl.miloszlewandowski.controllers;
+package pl.miloszlewandowski;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
