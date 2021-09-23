@@ -1,7 +1,8 @@
-package pl.miloszlewandowski.entities;
+package pl.miloszlewandowski.threads;
 
 import javax.persistence.*;
 import java.util.List;
+import pl.miloszlewandowski.records.Record;
 
 @Entity
 @Table(name = "threads")

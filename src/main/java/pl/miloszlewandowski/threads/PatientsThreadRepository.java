@@ -1,4 +1,4 @@
-package pl.miloszlewandowski.repositories;
+package pl.miloszlewandowski.threads;
 
 public interface PatientsThreadRepository {
 }
