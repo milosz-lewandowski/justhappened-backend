@@ -1,7 +1,6 @@
-package pl.miloszlewandowski.repositories;
+package pl.miloszlewandowski.therapists;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.miloszlewandowski.entities.Therapist;
 
 public interface TherapistRepository extends JpaRepository<Therapist, Long> {
 

@@ -1,11 +1,10 @@
-package pl.miloszlewandowski.controllers;
+package pl.miloszlewandowski.therapists;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.miloszlewandowski.entities.Patient;
-import pl.miloszlewandowski.entities.Therapist;
-import pl.miloszlewandowski.repositories.PatientRepository;
-import pl.miloszlewandowski.repositories.TherapistRepository;
+import pl.miloszlewandowski.therapists.Therapist;
+import pl.miloszlewandowski.patients.PatientRepository;
+import pl.miloszlewandowski.therapists.TherapistRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
