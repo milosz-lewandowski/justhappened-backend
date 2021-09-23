@@ -1,7 +1,7 @@
-package pl.miloszlewandowski.entities;
+package pl.miloszlewandowski.activities;
 
 import javax.persistence.*;
-import java.util.Objects;
+import pl.miloszlewandowski.patients.Patient;
 
 @Entity
 @Table(name = "activities")

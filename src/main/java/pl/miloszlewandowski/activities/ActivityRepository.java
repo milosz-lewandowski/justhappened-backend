@@ -1,7 +1,6 @@
-package pl.miloszlewandowski.repositories;
+package pl.miloszlewandowski.activities;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.miloszlewandowski.entities.Activity;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
