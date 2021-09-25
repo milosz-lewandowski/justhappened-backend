@@ -10,7 +10,7 @@ public class MoodCheck {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long MoodcheckId;
+    private Integer MoodcheckId;
     @OneToOne
     private Activity activity;
     private Integer mood;
@@ -19,11 +19,11 @@ public class MoodCheck {
 //    @JoinColumn(name = "record_id")
     private Record record;
 
-    public Long getMoodcheckId() {
+    public Integer getMoodcheckId() {
         return MoodcheckId;
     }
 
-    public void setMoodcheckId(Long moodcheckId) {
+    public void setMoodcheckId(Integer moodcheckId) {
         MoodcheckId = moodcheckId;
     }
 

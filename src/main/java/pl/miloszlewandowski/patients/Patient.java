@@ -12,7 +12,7 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long patientId;
+    private Integer patientId;
     private String name;
     @OneToMany
     List<Activity> activities;
@@ -37,11 +37,11 @@ public class Patient {
         this.activities = activities;
     }
 
-    public Long getPatientId() {
+    public Integer getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(Long patientId) {
+    public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
 

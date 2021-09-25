@@ -14,7 +14,7 @@ public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long RecordId;
+    private Integer RecordId;
     private LocalDateTime dateTime;
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
@@ -25,11 +25,11 @@ public class Record {
     @OneToMany
     private List<Emotion> emotions;
 
-    public Long getRecordId() {
+    public Integer getRecordId() {
         return RecordId;
     }
 
-    public void setRecordId(Long recordId) {
+    public void setRecordId(Integer recordId) {
         RecordId = recordId;
     }
 

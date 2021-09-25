@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//patient = patientRepository.getById(id)
+//patients = patientRepository.getById(id)
 @RestController
 public class MenagePatientsController {
 
@@ -27,7 +27,7 @@ public class MenagePatientsController {
 
     //todo: service
     @GetMapping("/patients/{id}")
-    public ResponseEntity<Patient> getPatient(@PathVariable("id")Long id){
+    public ResponseEntity<Patient> getPatient(@PathVariable("id")Integer id){
         return ResponseEntity.ok(patientRepository.getById(id));
     }
 
@@ -44,7 +44,7 @@ public class MenagePatientsController {
     }
 
     @DeleteMapping("/patients/{id}")
-    public void deletePatient(@PathVariable("id") Long id){
+    public void deletePatient(@PathVariable("id") Integer id){
         patientRepository.deleteById(id);
     }
 }

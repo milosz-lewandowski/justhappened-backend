@@ -8,7 +8,7 @@ public class Observation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long observationId;
+    private Integer observationId;
     private String thought;
     private String situation;
     private String effect;
@@ -50,11 +50,11 @@ public class Observation {
         this.thread = thread;
     }
 
-    public Long getObservationId() {
+    public Integer getObservationId() {
         return observationId;
     }
 
-    public void setObservationId(Long observationId) {
+    public void setObservationId(Integer observationId) {
         this.observationId = observationId;
     }
 }

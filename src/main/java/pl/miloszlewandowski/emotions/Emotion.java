@@ -11,7 +11,7 @@ public class Emotion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long emotionId;
+    private Integer emotionId;
     private String name;
 //    private EmotionsGroup group;
 
@@ -34,11 +34,11 @@ public class Emotion {
 //        this.group = group;
 //    }
 
-    public Long getEmotionId() {
+    public Integer getEmotionId() {
         return emotionId;
     }
 
-    public void setEmotionId(Long emotionId) {
+    public void setEmotionId(Integer emotionId) {
         this.emotionId = emotionId;
     }
 }

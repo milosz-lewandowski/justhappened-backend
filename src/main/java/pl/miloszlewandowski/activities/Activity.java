@@ -9,16 +9,16 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ActivityId;
+    private Integer ActivityId;
     private String activityName;
     @ManyToOne
     private Patient patient;
 
-    public Long getActivityId() {
+    public Integer getActivityId() {
         return ActivityId;
     }
 
-    public void setActivityId(Long activityId) {
+    public void setActivityId(Integer activityId) {
         ActivityId = activityId;
     }
 

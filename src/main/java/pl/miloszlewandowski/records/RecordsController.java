@@ -34,7 +34,7 @@ public class RecordsController {
 //  }
 
   @GetMapping(value = "/records/{id}")
-  ResponseEntity getRecordById(Long recordId) {
+  ResponseEntity getRecordById(Integer recordId) {
     return ResponseEntity.ok(recordRepository.findById(recordId));
   }
 }

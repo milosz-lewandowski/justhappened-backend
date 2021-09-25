@@ -1,48 +1,51 @@
 package pl.miloszlewandowski.therapists;
 
-import javax.persistence.*;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import lombok.Builder;
 import pl.miloszlewandowski.patients.Patient;
 
 @Entity
 @Table(name = "therapists")
+@Builder
 public class Therapist {
 
-    //in case of run errors try to set drop-create ddl option
+  // in case of run errors try to set drop-create ddl option
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long TherapistId;
-    private String Name;
-    private String Specialization;
-    @OneToMany
-//    @JoinColumn(name = "patient_id")
-    private List<Patient> patient;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
+  private String name;
+  @JoinColumn(name = "therapist_id")
+  @OneToMany
+  private List<Patient> patients;
 
-    public Therapist() {
-    }
+  public List<Patient> getPatients() {
+    return patients;
+  }
 
-    public Long getTherapistId() {
-        return TherapistId;
-    }
+  public Therapist() {}
 
-    public void setTherapistId(Long therapistId) {
-        TherapistId = therapistId;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getName() {
-        return Name;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        Name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getSpecialization() {
-        return Specialization;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setSpecialization(String specialization) {
-        Specialization = specialization;
-    }
 }

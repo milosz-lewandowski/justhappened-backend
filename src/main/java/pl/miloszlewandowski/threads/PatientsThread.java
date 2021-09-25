@@ -10,16 +10,16 @@ public class PatientsThread  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long PatientThreadId;
+    private Integer PatientThreadId;
     private String name;
     @OneToMany
     private List<Record> record;
 
-    public Long getPatientThreadId() {
+    public Integer getPatientThreadId() {
         return PatientThreadId;
     }
 
-    public void setPatientThreadId(Long patientThreadId) {
+    public void setPatientThreadId(Integer patientThreadId) {
         PatientThreadId = patientThreadId;
     }
 

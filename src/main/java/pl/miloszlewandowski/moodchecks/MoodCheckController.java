@@ -24,7 +24,7 @@ public class MoodCheckController {
     }
 
     @GetMapping(path = "/moodchecks/{id}")
-    ResponseEntity getMoodcheckById(Long moodcheckId){
+    ResponseEntity getMoodcheckById(Integer moodcheckId){
         return ResponseEntity.ok(moodcheksRepository.findById(moodcheckId));
     }
 }
