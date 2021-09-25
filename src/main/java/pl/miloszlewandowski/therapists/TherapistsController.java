@@ -1,5 +1,7 @@
 package pl.miloszlewandowski.therapists;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +33,10 @@ public class TherapistsController {
     return ResponseEntity.ok(therapistService.findTherapistById(id));
   }
 
-  @PostMapping("therapists")
-  public TherapistDto saveTherapist(@RequestBody TherapistSaveDto therapistSaveDto) {
+  @ApiOperation(value = "Create new therapist")
+  @PostMapping()
+  public TherapistDto saveTherapist(
+      @ApiParam(value = "New therapist data") @RequestBody TherapistSaveDto therapistSaveDto) {
     return therapistService.createTherapist(therapistSaveDto);
   }
 
