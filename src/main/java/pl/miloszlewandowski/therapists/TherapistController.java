@@ -1,43 +1,53 @@
 package pl.miloszlewandowski.therapists;
 
-import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "therapists")
-public class TherapistsController {
+@EnableSpringDataWebSupport
+@RequestMapping(
+    path = "/therapists",
+    consumes = {
+      //      MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+      MediaType.APPLICATION_JSON_VALUE
+      //        , MediaType.ALL_VALUE
+    })
+public class TherapistController {
 
   private final TherapistService therapistService;
 
-  public TherapistsController(TherapistService therapistService) {
+  public TherapistController(TherapistService therapistService) {
     this.therapistService = therapistService;
   }
 
-  @GetMapping()
-  public List<TherapistLabel> therapistsLabelList(@RequestParam(required = false) String pattern) {
-    return therapistService.findByNameOrAll(Optional.ofNullable(pattern));
+  //  @GetMapping(path = "/")
+  //  public List<TherapistLabel> therapistsLabelList(@RequestParam(required = false) String
+  // pattern) {
+  //    return therapistService.findByNameOrAll(Optional.ofNullable(pattern));
+  //  }
+
+  //  @GetMapping(path = "/{id}")
+  //  public TherapistDto getTherapist(@PathVariable(value = "id") Integer id) {
+  //    return therapistService.findTherapistById(id);
+  //  }
+
+  @GetMapping(path = "/{id}")
+  public TherapistDetailsProjection getTherapistProjection(@PathVariable(value = "id") Integer id) {
+    return therapistService.getProjectionById(id);
   }
 
-  @GetMapping(value = "{id}")
-  public ResponseEntity<TherapistDto> getTherapist(@PathVariable(value = "id") Integer id) {
-    return ResponseEntity.ok(therapistService.findTherapistById(id));
-  }
-
-  @ApiOperation(value = "Create new therapist")
-  @PostMapping()
-  public TherapistDto saveTherapist(
+  //  @ApiOperation(value = "Create new therapist")
+  @PostMapping(path = "/")
+  public void saveTherapist(
       @ApiParam(value = "New therapist data") @RequestBody TherapistSaveDto therapistSaveDto) {
-    return therapistService.createTherapist(therapistSaveDto);
+    therapistService.createTherapist(therapistSaveDto);
   }
 
   //  @PutMapping("therapists/{id}")

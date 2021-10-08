@@ -20,19 +20,23 @@ public class TherapistService {
   }
 
   //  -------------- find methods
-  private Therapist getTherapist(Integer id) {
+  private TherapistDetailsProjection getTherapist(Integer id) {
     return therapistRepository
-        .findById(id)
-        .orElseThrow(
-            () ->
-                new RequestException(
-                    RequestExceptionCode.ID_NOT_FOUND,
-                    HttpStatus.NO_CONTENT,
-                    "Therapist with id: " + id + " not found"));
+        .getTherapistDetailsProjectionById(id);
+//        .orElseThrow(
+//            () ->
+//                new RequestException(
+//                    RequestExceptionCode.ID_NOT_FOUND,
+//                    HttpStatus.NO_CONTENT,
+//                    "Therapist with id: " + id + " not found"));
   }
 
-  public TherapistDto findTherapistById(Integer id) {
-    return therapistMapper.entityToDto(getTherapist(id));
+//  public TherapistDto findTherapistById(Integer id) {
+//    return therapistMapper.entityToDto(getTherapist(id));
+//  }
+
+  public TherapistDetailsProjection getProjectionById(Integer id) {
+    return therapistRepository.getTherapistDetailsProjectionById(id);
   }
 
   public List<TherapistLabel> findByNameOrAll(Optional<String> pattern) {
@@ -44,9 +48,8 @@ public class TherapistService {
 
   // ------------- create methods
 
-  public TherapistDto createTherapist(TherapistSaveDto therapistSaveDto) {
-    return therapistMapper.entityToDto(
-        therapistRepository.save(therapistMapper.entityFromSaveDto(therapistSaveDto)));
+  public void createTherapist(TherapistSaveDto therapistSaveDto) {
+    therapistRepository.save(therapistMapper.entityFromSaveDto(therapistSaveDto));
   }
 
 

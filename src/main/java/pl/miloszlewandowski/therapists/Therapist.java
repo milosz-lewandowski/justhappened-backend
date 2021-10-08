@@ -8,15 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import lombok.Builder;
 import pl.miloszlewandowski.patients.Patient;
 
 @Entity
 @Table(name = "therapists")
-@Builder
 public class Therapist {
-
-  // in case of run errors try to set drop-create ddl option
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +22,11 @@ public class Therapist {
   @OneToMany
   private List<Patient> patients;
 
+  public Therapist() {}
+
   public List<Patient> getPatients() {
     return patients;
   }
-
-  public Therapist() {}
 
   public Integer getId() {
     return id;
@@ -47,5 +43,4 @@ public class Therapist {
   public void setName(String name) {
     this.name = name;
   }
-
 }
