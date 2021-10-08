@@ -12,13 +12,13 @@ public class PatientService {
     this.patientRepository = patientRepository;
   }
 
-  public List<Patient> getAll(){
-    return patientRepository.findAll();
-  }
+//  public List<PatientLabel> getAll(){
+//    return patientRepository.getAllPatientLabel();
+//  }
 
 
-  public Patient getById(Integer id) {
-    return patientRepository.getById(id);
+  public PatientDetailsTempProjection getById(Integer id) {
+    return patientRepository.getPatientDetailsTempProjectionById(id);
   }
 
   public Patient saveNewPatient(Patient patient) {

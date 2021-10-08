@@ -1,6 +1,7 @@
 package pl.miloszlewandowski.patients;
 
 import java.util.List;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/patients")
+@RequestMapping(path = "/patients", consumes = {
+    MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+    MediaType.APPLICATION_JSON_VALUE,
+    MediaType.ALL_VALUE})
 public class PatientController {
 
   private final PatientService patientService;
@@ -20,31 +24,30 @@ public class PatientController {
     this.patientService = patientService;
   }
 
-  @GetMapping("/")
-  public List<Patient> getAll() {
-    return patientService.getAll();
-  }
+//  @GetMapping(path = "/")
+//  public List<PatientLabel> getAll() {
+//    return patientService.getAll();
+//  }
 
-  // todo: service
-  @GetMapping("/{id}")
-  public Patient getPatient(@PathVariable("id") Integer id) {
+  @GetMapping(path = "/{id}")
+  public PatientDetailsTempProjection getPatient(@PathVariable(value = "id") Integer id) {
     return patientService.getById(id);
   }
 
-  @PostMapping("/")
+  @PostMapping(path = "/")
   public Patient savePatient(@RequestBody Patient patient) {
     //      todo: savePatientDTO
     return patientService.saveNewPatient(patient);
   }
 
-  @PutMapping("/{id}")
-  public Patient updatePatient(@PathVariable("id") Integer id, @RequestBody Patient patient) {
+  @PutMapping(path = "/{id}")
+  public Patient updatePatient(@PathVariable(value = "id") Integer id, @RequestBody Patient patient) {
 //      todo: patientDTO
     return patientService.updatePatient(patient);
   }
 
-  @DeleteMapping("/{id}")
-  public void deletePatient(@PathVariable("id") Integer id) {
+  @DeleteMapping(path = "/{id}")
+  public void deletePatient(@PathVariable(value = "id") Integer id) {
     patientService.deleteById(id);
   }
 }

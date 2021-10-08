@@ -12,7 +12,7 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer patientId;
+    private Integer id;
     private String name;
     @OneToMany
     List<Activity> activities;
@@ -37,12 +37,12 @@ public class Patient {
         this.activities = activities;
     }
 
-    public Integer getPatientId() {
-        return patientId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPatientId(Integer patientId) {
-        this.patientId = patientId;
+    public void setId(Integer patientId) {
+        this.id = patientId;
     }
 
     public String getName() {
