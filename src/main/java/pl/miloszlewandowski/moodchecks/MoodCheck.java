@@ -2,7 +2,7 @@ package pl.miloszlewandowski.moodchecks;
 
 import javax.persistence.*;
 import pl.miloszlewandowski.activities.Activity;
-import pl.miloszlewandowski.records.Record;
+import pl.miloszlewandowski.records.TheRecord;
 
 @Entity
 @Table(name = "moodchecks")
@@ -17,7 +17,7 @@ public class MoodCheck {
     private Integer selfEsteem;
     @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "record_id")
-    private Record record;
+    private TheRecord theRecord;
 
     public Integer getMoodcheckId() {
         return MoodcheckId;
@@ -51,12 +51,12 @@ public class MoodCheck {
         this.selfEsteem = selfEsteem;
     }
 
-    public Record getRecord() {
-        return record;
+    public TheRecord getRecord() {
+        return theRecord;
     }
 
-    public void setRecord(Record record) {
-        this.record = record;
+    public void setRecord(TheRecord theRecord) {
+        this.theRecord = theRecord;
     }
 
     public MoodCheck() {

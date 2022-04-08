@@ -1,8 +1,7 @@
 package pl.miloszlewandowski.records;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.miloszlewandowski.records.Record;
 
-public interface RecordRepository extends JpaRepository<Record, Integer> {
+public interface RecordRepository extends JpaRepository<TheRecord, Integer> {
 //    Page<Record> getAllByPatient(Pageable pageable);
 }

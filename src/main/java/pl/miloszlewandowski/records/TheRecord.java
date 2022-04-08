@@ -10,7 +10,7 @@ import pl.miloszlewandowski.patients.Patient;
 
 @Entity
 @Table(name = "records")
-public class Record {
+public class TheRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,6 +73,6 @@ public class Record {
         this.emotions = emotions;
     }
 
-    public Record() {
+    public TheRecord() {
     }
 }

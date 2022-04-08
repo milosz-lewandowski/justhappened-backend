@@ -36,12 +36,13 @@ public class MenagePatientsController {
         patientRepository.save(patient);
     }
 
-    @PutMapping("patients/{id}")
-    public void updatePatient(@RequestBody Patient patient){
-        patientRepository.getById(patient.getPatientId());
-
-        patientRepository.save(patient);
-    }
+//    @PutMapping("patients/{id}")
+//    public void updatePatient(@RequestBody Patient patient){
+    //      ERROR:  request body cannot be null
+//        patientRepository.getById(patient.getPatientId());
+//
+//        patientRepository.save(patient);
+//    }
 
     @DeleteMapping("/patients/{id}")
     public void deletePatient(@PathVariable("id") Integer id){

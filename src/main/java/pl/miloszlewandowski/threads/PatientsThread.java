@@ -2,7 +2,7 @@ package pl.miloszlewandowski.threads;
 
 import javax.persistence.*;
 import java.util.List;
-import pl.miloszlewandowski.records.Record;
+import pl.miloszlewandowski.records.TheRecord;
 
 @Entity
 @Table(name = "threads")
@@ -13,7 +13,7 @@ public class PatientsThread  {
     private Integer id;
     private String name;
     @OneToMany
-    private List<Record> record;
+    private List<TheRecord> theRecords;
 
     public Integer getId() {
         return id;
@@ -31,12 +31,12 @@ public class PatientsThread  {
         this.name = name;
     }
 
-    public List<Record> getRecord() {
-        return record;
+    public List<TheRecord> getRecord() {
+        return theRecords;
     }
 
-    public void setRecord(List<Record> record) {
-        this.record = record;
+    public void setRecord(List<TheRecord> theRecord) {
+        this.theRecords = theRecord;
     }
 
     public PatientsThread() {

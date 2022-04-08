@@ -3,7 +3,7 @@ package pl.miloszlewandowski.patients;
 import javax.persistence.*;
 import java.util.List;
 import pl.miloszlewandowski.activities.Activity;
-import pl.miloszlewandowski.records.Record;
+import pl.miloszlewandowski.records.TheRecord;
 import pl.miloszlewandowski.therapists.Therapist;
 
 @Entity
@@ -17,16 +17,16 @@ public class Patient {
     @OneToMany
     List<Activity> activities;
     @OneToMany
-    List<Record> records;
+    List<TheRecord> theRecords;
     @ManyToOne
     private Therapist therapist;
 
-    public List<Record> getRecords() {
-        return records;
+    public List<TheRecord> getRecords() {
+        return theRecords;
     }
 
-    public void setRecords(List<Record> records) {
-        this.records = records;
+    public void setRecords(List<TheRecord> theRecords) {
+        this.theRecords = theRecords;
     }
 
     public List<Activity> getActivities() {
