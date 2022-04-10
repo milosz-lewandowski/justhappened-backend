@@ -1,6 +1,5 @@
 package pl.miloszlewandowski.patients;
 
-import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,8 +16,12 @@ public class PatientService {
 //  }
 
 
-  public PatientDetailsTempProjection getById(Integer id) {
+  public PatientDetailsTempProjection getDetailsProjectionById(Integer id) {
     return patientRepository.getPatientDetailsTempProjectionById(id);
+  }
+
+  public Patient getById(Integer id){
+    return patientRepository.getById(id);
   }
 
   public Patient saveNewPatient(Patient patient) {

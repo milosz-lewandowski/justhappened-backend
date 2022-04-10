@@ -1,6 +1,5 @@
 package pl.miloszlewandowski.patients;
 
-import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +30,7 @@ public class PatientController {
 
   @GetMapping(path = "/{id}")
   public PatientDetailsTempProjection getPatient(@PathVariable(value = "id") Integer id) {
-    return patientService.getById(id);
+    return patientService.getDetailsProjectionById(id);
   }
 
   @PostMapping(path = "/")
