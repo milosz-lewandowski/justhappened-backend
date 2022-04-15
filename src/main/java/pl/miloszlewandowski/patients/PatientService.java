@@ -2,6 +2,8 @@ package pl.miloszlewandowski.patients;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PatientService {
 
@@ -35,5 +37,9 @@ public class PatientService {
 
   public void deleteById(Integer id) {
     patientRepository.deleteById(id);
+  }
+
+  public List<Patient> getAll() {
+    return patientRepository.findAll();
   }
 }

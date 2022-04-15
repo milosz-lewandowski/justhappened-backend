@@ -18,15 +18,8 @@ public class Therapist {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String name;
-  @JoinColumn(name = "therapist_id")
-  @OneToMany
-  private List<Patient> patients;
 
   public Therapist() {}
-
-  public List<Patient> getPatients() {
-    return patients;
-  }
 
   public Integer getId() {
     return id;

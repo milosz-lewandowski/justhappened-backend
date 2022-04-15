@@ -1,6 +1,7 @@
 package pl.miloszlewandowski.activities;
 
 import org.springframework.stereotype.Service;
+import pl.miloszlewandowski.patients.PatientRepository;
 import pl.miloszlewandowski.patients.PatientService;
 
 import java.util.List;
@@ -9,11 +10,11 @@ import java.util.List;
 public class ActivityService {
 
     private final ActivityRepository activityRepository;
-    private final PatientService patientService;
+    private final PatientRepository patientRepository;
 
-    public ActivityService(ActivityRepository activityRepository, PatientService patientService) {
+    public ActivityService(ActivityRepository activityRepository, PatientService patientService, PatientRepository patientRepository) {
         this.activityRepository = activityRepository;
-        this.patientService = patientService;
+        this.patientRepository = patientRepository;
     }
 
 
@@ -29,8 +30,8 @@ public class ActivityService {
     public void save(ActivitySaveR activitySaveR) {
         Activity activity = new Activity();
         activity.setActivityName(activitySaveR.name());
-        activity.setPatient(
-                patientService.getById(activitySaveR.patientId()));
+//        activity.setPatient(
+//                patientRepository.getById(activitySaveR.patientId()));
         activityRepository.save(activity);
     }
 

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/patients", consumes = {
     MediaType.APPLICATION_FORM_URLENCODED_VALUE,
@@ -23,13 +25,18 @@ public class PatientController {
     this.patientService = patientService;
   }
 
-//  @GetMapping(path = "/")
-//  public List<PatientLabel> getAll() {
-//    return patientService.getAll();
-//  }
+  @GetMapping(path = "/")
+  public List<Patient> getAll() {
+    return patientService.getAll();
+  }
 
   @GetMapping(path = "/{id}")
-  public PatientDetailsTempProjection getPatient(@PathVariable(value = "id") Integer id) {
+  public Patient getPatient(@PathVariable(value = "id") Integer id) {
+    return patientService.getById(id);
+  }
+
+  @GetMapping(path = "/p/{id}")
+  public PatientDetailsTempProjection getPatientDetails(@PathVariable(value = "id") Integer id) {
     return patientService.getDetailsProjectionById(id);
   }
 

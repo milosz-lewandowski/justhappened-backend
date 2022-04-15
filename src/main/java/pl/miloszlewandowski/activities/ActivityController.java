@@ -24,7 +24,7 @@ public class ActivityController {
         return activityService.getAll();
     }
 
-    @GetMapping(path = "/{patientId}")
+    @GetMapping(path = "/p/{patientId}")
     public List<Activity> getByPatientId(@PathVariable(value = "patientId") Integer id){
         return activityService.getAll();
     }

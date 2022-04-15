@@ -1,30 +1,30 @@
 package pl.miloszlewandowski.moodchecks;
 
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping(consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+@RequestMapping(path = "/moodcheck",consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE,
         MediaType.APPLICATION_JSON_VALUE,
         MediaType.ALL_VALUE})
 public class MoodCheckController {
 
-    final MoodCheksRepository moodcheksRepository;
+    private final MoodCheckService moodCheckService;
 
-    public MoodCheckController(MoodCheksRepository moodcheksRepository) {
-        this.moodcheksRepository = moodcheksRepository;
+    public MoodCheckController(MoodCheckService moodCheckService) {
+        this.moodCheckService = moodCheckService;
     }
 
-    @GetMapping(path = "/moodchecks")
-    ResponseEntity getAllMoodchecks(){
-        return ResponseEntity.ok(moodcheksRepository.findAll());
+    @GetMapping(path = "/")
+    public List<MoodCheck> getAllMoodchecks(){
+        return moodCheckService.getAll();
     }
 
-    @GetMapping(path = "/moodchecks/{id}")
-    ResponseEntity getMoodcheckById(Integer moodcheckId){
-        return ResponseEntity.ok(moodcheksRepository.findById(moodcheckId));
+    @GetMapping(path = "/{id}")
+    public MoodCheck getMoodcheckById(Integer id){
+        return moodCheckService.getById(id);
     }
+
 }

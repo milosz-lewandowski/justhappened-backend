@@ -38,6 +38,7 @@ public class MenagePatientsController {
 
 //    @PutMapping("patients/{id}")
 //    public void updatePatient(@RequestBody Patient patient){
+
     //      ERROR:  request body cannot be null
 //        patientRepository.getById(patient.getPatientId());
 //

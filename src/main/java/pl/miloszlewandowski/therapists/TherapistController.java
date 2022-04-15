@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableSpringDataWebSupport
 @RequestMapping(
-    path = "/therapists",
-    consumes = {
-      //      MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-      MediaType.APPLICATION_JSON_VALUE
-      //        , MediaType.ALL_VALUE
-    })
+    path = "/therapists")
 public class TherapistController {
 
   private final TherapistService therapistService;

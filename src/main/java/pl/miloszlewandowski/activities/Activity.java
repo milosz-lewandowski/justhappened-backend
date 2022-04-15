@@ -9,17 +9,15 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ActivityId;
+    private Integer Id;
     private String activityName;
-    @ManyToOne
-    private Patient patient;
 
-    public Integer getActivityId() {
-        return ActivityId;
+    public Integer getId() {
+        return Id;
     }
 
-    public void setActivityId(Integer activityId) {
-        ActivityId = activityId;
+    public void setId(Integer id) {
+        Id = id;
     }
 
     public String getActivityName() {
@@ -28,14 +26,6 @@ public class Activity {
 
     public void setActivityName(String activityName) {
         this.activityName = activityName;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 
     public Activity() {
