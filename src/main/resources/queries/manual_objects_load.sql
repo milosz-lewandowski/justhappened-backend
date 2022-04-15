@@ -1,12 +1,12 @@
 insert into
-    therapists (id, name, specialization)
+    therapists (id, name)
 values
-(1, 't1', 'spec1'),
-(2, 't2', 'spec2'),
-(3, 't3', 'spec3');
+(1, 't1'),
+(2, 't2'),
+(3, 't3');
 
 insert into
-    patients (id, name, therapists_id)
+    patients (id, name, therapist_id)
 values
 (1, 'p1', 1),
 (2, 'p2', 2),
