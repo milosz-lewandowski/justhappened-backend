@@ -30,12 +30,16 @@ public class ActivityService {
     public void save(ActivitySaveR activitySaveR) {
         Activity activity = new Activity();
         activity.setActivityName(activitySaveR.name());
-//        activity.setPatient(
-//                patientRepository.getById(activitySaveR.patientId()));
+        activity.setPatient(
+                patientRepository.getById(activitySaveR.patientId()));
         activityRepository.save(activity);
     }
 
     public void deleteById(Integer id) {
         activityRepository.deleteById(id);
+    }
+
+    public List<Activity> getAllByPatientId(Integer id) {
+        return activityRepository.findByPatient_Id(id);
     }
 }

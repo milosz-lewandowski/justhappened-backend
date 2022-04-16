@@ -26,7 +26,7 @@ public class ActivityController {
 
     @GetMapping(path = "/p/{patientId}")
     public List<Activity> getByPatientId(@PathVariable(value = "patientId") Integer id){
-        return activityService.getAll();
+        return activityService.getAllByPatientId(id);
     }
 
     @PostMapping(path = "/")

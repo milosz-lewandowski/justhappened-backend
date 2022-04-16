@@ -1,6 +1,8 @@
 package pl.miloszlewandowski.activities;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.miloszlewandowski.patients.Patient;
 
 @Entity
@@ -11,6 +13,10 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     private String activityName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_id")
+    @JsonIgnore
+    private Patient patient;
 
     public Integer getId() {
         return Id;
@@ -26,6 +32,14 @@ public class Activity {
 
     public void setActivityName(String activityName) {
         this.activityName = activityName;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public Activity() {
