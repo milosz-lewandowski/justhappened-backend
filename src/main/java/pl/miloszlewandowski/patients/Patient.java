@@ -16,7 +16,7 @@ public class Patient {
     private String name;
     @OneToMany
     List<Activity> activities;
-    @OneToMany
+    @OneToMany()
     List<TheRecord> theRecords;
     @ManyToOne
     private Therapist therapist;

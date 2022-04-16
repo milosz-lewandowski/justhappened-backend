@@ -1,22 +1,11 @@
 package pl.miloszlewandowski.patients;
 
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/patients", consumes = {
-    MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-    MediaType.APPLICATION_JSON_VALUE,
-    MediaType.ALL_VALUE})
+@RequestMapping(path = "/patients")
 public class PatientController {
 
   private final PatientService patientService;
@@ -41,9 +30,8 @@ public class PatientController {
   }
 
   @PostMapping(path = "/")
-  public Patient savePatient(@RequestBody Patient patient) {
-    //      todo: savePatientDTO
-    return patientService.saveNewPatient(patient);
+  public Patient savePatient(@RequestBody PatientSaveR patientSaveR) {
+    return patientService.saveNewPatient(patientSaveR);
   }
 
   @PutMapping(path = "/{id}")

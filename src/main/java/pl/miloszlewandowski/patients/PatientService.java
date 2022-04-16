@@ -13,11 +13,6 @@ public class PatientService {
     this.patientRepository = patientRepository;
   }
 
-//  public List<PatientLabel> getAll(){
-//    return patientRepository.getAllPatientLabel();
-//  }
-
-
   public PatientDetailsTempProjection getDetailsProjectionById(Integer id) {
     return patientRepository.getPatientDetailsTempProjectionById(id);
   }
@@ -26,7 +21,9 @@ public class PatientService {
     return patientRepository.getById(id);
   }
 
-  public Patient saveNewPatient(Patient patient) {
+  public Patient saveNewPatient(PatientSaveR patientSaveR) {
+    Patient patient = new Patient();
+    patient.setName(patientSaveR.name());
     return patientRepository.save(patient);
   }
 
