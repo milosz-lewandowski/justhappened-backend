@@ -1,14 +1,11 @@
 package pl.miloszlewandowski.moodchecks;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/moodcheck",consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-        MediaType.APPLICATION_JSON_VALUE,
-        MediaType.ALL_VALUE})
+@RequestMapping(path = "/moodcheck")
 public class MoodCheckController {
 
     private final MoodCheckService moodCheckService;
@@ -25,6 +22,11 @@ public class MoodCheckController {
     @GetMapping(path = "/{id}")
     public MoodCheck getMoodcheckById(Integer id){
         return moodCheckService.getById(id);
+    }
+
+    @PostMapping
+    public void saveMoodcheck(@RequestBody MoodCheckSaveR moodCheckSaveR){
+        moodCheckService.saveMoodCheck(moodCheckSaveR);
     }
 
 }
