@@ -1,7 +1,9 @@
-package pl.miloszlewandowski.patients;
+package pl.miloszlewandowski.menage_patients;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.miloszlewandowski.patients.Patient;
+import pl.miloszlewandowski.patients.PatientRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,15 +11,18 @@ import java.util.Map;
 
 //patients = patientRepository.getById(id)
 @RestController
+@RequestMapping(path = "menage_patients")
 public class MenagePatientsController {
 
     final PatientRepository patientRepository;
+    private final MenagePatientService menagePatientService;
 
-    public MenagePatientsController(PatientRepository patientRepository) {
+    public MenagePatientsController(PatientRepository patientRepository, MenagePatientService menagePatientService) {
         this.patientRepository = patientRepository;
+        this.menagePatientService = menagePatientService;
     }
 
-    @GetMapping("/patients")
+    @GetMapping("/")
     public ResponseEntity<Map<String, List<Patient>>> patientsList(){
         Map<String, List<Patient>> map = new HashMap();
         map.put("patients", patientRepository.findAll());
@@ -26,15 +31,21 @@ public class MenagePatientsController {
 
 
     //todo: service
-    @GetMapping("/patients/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Patient> getPatient(@PathVariable("id")Integer id){
         return ResponseEntity.ok(patientRepository.getById(id));
     }
 
-    @PostMapping("patients")
+    @PostMapping("/")
     public void savePatient(@RequestBody Patient patient){
         patientRepository.save(patient);
     }
+
+    @PostMapping(path = "/therapist")
+    public void setPatientsTherapist(@RequestBody SetPatientsTherapist setPatientsTherapist){
+        menagePatientService.setPatientsTherapist(setPatientsTherapist);
+    }
+
 
 //    @PutMapping("patients/{id}")
 //    public void updatePatient(@RequestBody Patient patient){
@@ -45,7 +56,7 @@ public class MenagePatientsController {
 //        patientRepository.save(patient);
 //    }
 
-    @DeleteMapping("/patients/{id}")
+    @DeleteMapping("/{id}")
     public void deletePatient(@PathVariable("id") Integer id){
         patientRepository.deleteById(id);
     }
