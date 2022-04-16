@@ -1,40 +1,33 @@
 package pl.miloszlewandowski.records;
 
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping(
-    consumes = {
-      MediaType.APPLICATION_JSON_VALUE,
-      MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-      MediaType.ALL_VALUE
-    })
+@RequestMapping(path = "/records")
 public class RecordsController {
-  final RecordRepository recordRepository;
 
-  public RecordsController(RecordRepository recordRepository) {
-    this.recordRepository = recordRepository;
+  private final RecordService recordService;
+
+  public RecordsController(RecordService recordService) {
+    this.recordService = recordService;
   }
 
-  //    @GetMapping(value = "/records")
-  //    Page<Record> getAllRecords(){
-  //        return recordRepository.getAll();
-  //    }
-
-//  @GetMapping("/records")
-//  Page<Record> getPaginatedRecords(
-//      @RequestParam("pageNr") int pageNr, @RequestParam("size") int size) {
-//    Pageable pageable = PageRequest.of(pageNr, size);
-//    Page<Record> page = recordRepository.findAll(pageable);
-//    return page;
-//  }
-
-  @GetMapping(value = "/records/{id}")
-  ResponseEntity getRecordById(Integer recordId) {
-    return ResponseEntity.ok(recordRepository.findById(recordId));
+  @GetMapping(value = "/{id}")
+  public TheRecord getRecordById(@PathVariable(value = "id") Integer recordId) {
+    return recordService.findById(recordId);
   }
+
+  @GetMapping(path = "/patient/{id}")
+  public List<TheRecord> getAllRecordByPatientId(
+      @PathVariable(value = "id") Integer id) {
+    return recordService.findAllRecordByPatientId(id);
+  }
+
+  @PostMapping(path = "/")
+  public void saveRecord(@RequestBody RecordSaveR recordSaveR){
+    recordService.saveRecord(recordSaveR);
+  }
+
 }
