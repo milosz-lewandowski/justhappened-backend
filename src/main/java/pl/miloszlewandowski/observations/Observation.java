@@ -8,12 +8,10 @@ public class Observation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer observationId;
+    private Integer id;
     private String thought;
     private String situation;
     private String effect;
-    @ManyToOne
-    private PatientsThread thread;
 
     public Observation() {
     }
@@ -42,19 +40,11 @@ public class Observation {
         this.effect = effect;
     }
 
-    public PatientsThread getThread() {
-        return thread;
+    public Integer getId() {
+        return id;
     }
 
-    public void setThread(PatientsThread thread) {
-        this.thread = thread;
-    }
-
-    public Integer getObservationId() {
-        return observationId;
-    }
-
-    public void setObservationId(Integer observationId) {
-        this.observationId = observationId;
+    public void setId(Integer observationId) {
+        this.id = observationId;
     }
 }
