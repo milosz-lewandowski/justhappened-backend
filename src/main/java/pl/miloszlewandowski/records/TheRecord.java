@@ -13,12 +13,14 @@ import pl.miloszlewandowski.patients.Patient;
 
 @Entity
 @Table(name = "records")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class TheRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime dateTime;
+    private LocalDateTime started;
+    private LocalDateTime submitted;
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
 
@@ -26,16 +28,24 @@ public class TheRecord {
         return id;
     }
 
+    public LocalDateTime getStarted() {
+        return started;
+    }
+
+    public void setStarted(LocalDateTime started) {
+        this.started = started;
+    }
+
+    public LocalDateTime getSubmitted() {
+        return submitted;
+    }
+
+    public void setSubmitted(LocalDateTime submitted) {
+        this.submitted = submitted;
+    }
+
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 
     public Patient getPatient() {

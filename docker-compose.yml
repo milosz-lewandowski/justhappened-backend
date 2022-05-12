@@ -4,12 +4,25 @@ services:
     image: postgres:latest
     restart: always
     environment:
-#      POSTGRES_DB: default_database
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - '5432:5432'
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data2
-      # copy the sql script to create tables
-      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    - pgdata:/var/lib/postgresql/data2
+
+  app:
+    image: openjdk:17-alpine
+    ports:
+      - 8080:8080
+    working_dir: /app
+    volumes:
+      - "./target/miloszlewandowski-0.2.4.jar:/app/app.jar"
+    command: java -jar /app/app.jar
+    depends_on:
+      - db
+    environment:
+      SPRING_APPLICATION_JSON: '{"spring.datasource.url":"jdbc:postgresql://db:5432/postgres"}'
+
+volumes:
+  pgdata:

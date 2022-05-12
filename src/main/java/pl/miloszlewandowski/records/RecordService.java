@@ -28,7 +28,7 @@ public class RecordService {
 
   public void saveRecord(RecordSaveR recordSaveR) {
     TheRecord theRecord = new TheRecord();
-    theRecord.setDateTime(LocalDateTime.now());
+    theRecord.setStarted(LocalDateTime.now());
     theRecord.setPatient(patientRepository.getById(recordSaveR.patientId()));
     recordRepository.save(theRecord);
   }

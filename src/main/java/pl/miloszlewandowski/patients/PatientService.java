@@ -27,7 +27,6 @@ public class PatientService {
     return patientRepository.save(patient);
   }
 
-
   public Patient updatePatient(Patient patient) {
     return null;
   }
